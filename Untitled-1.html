@@ -1,0 +1,66 @@
+<button onclick="clkBtn('btn-click!!');">
+    click me!!!
+</button>
+<div id="dsplay01"></div>
+
+<script>
+
+    let div = document.getElementById('dsplay01');
+
+    var px = 0;
+    var py = 0;
+
+    document.addEventListener('keydown', event => {
+        //console.log(event);
+        switch (event.key) {
+            case 'w':
+                //div.textContent = "W";
+                py--;
+                break;
+            case 's':
+                //div.textContent = "S";
+                py++;
+                break;
+            case 'a':
+                //div.textContent = "A";
+                px--;
+                break;
+            case 'd':
+                //div.textContent = "D";
+                px++;
+                break;
+            default:
+                return;
+                break;
+        }
+
+        //var a = 0;
+        //y.forEach(element => {
+        //    a++;
+        //    var ax = element[x];
+        //    div.innerHTML = ax[a];
+        //}
+        //);
+
+            div.innerHTML = "";
+
+        for (var h = 0; h < 20; h++) {
+            for (var i = 0; i < 20; i++) {
+                if (i == px && h == py) 
+                {
+                    div.innerHTML += "□";
+                    continue;
+                }
+
+                div.innerHTML += "■";
+            }
+            div.innerHTML += "</br>";
+        }
+        //div.innerHTML[px][py] = "■";
+        //console.log(div.innerHTML[px][py]);
+    });
+
+
+
+    //div.innerHTML += "■ <br>";
+</script>
