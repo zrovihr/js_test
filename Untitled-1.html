@@ -7,33 +7,48 @@
 
     let div = document.getElementById('dsplay01');
 
-    var px = 0;
-    var py = 0;
+    const maxX = 20;
+    const maxY = 20;
+    var px = maxX / 2;
+    var py = maxY / 2;
+
+    //var starX = Math.random(0,maxX-1);
+    var starX = 1;
+    var starY = 0;
 
     document.addEventListener('keydown', event => {
         //console.log(event);
+
         switch (event.key) {
-            case 'w':
-                //div.textContent = "W";
+            case 'w' || 'W':
+                if (py <= 0) {
+                    break;
+                }
                 py--;
                 break;
-            case 's':
-                //div.textContent = "S";
+            case 's' || 'S':
+                if (py >= maxY - 1) {
+                    break;
+                }
                 py++;
                 break;
-            case 'a':
-                //div.textContent = "A";
+            case 'a'|| 'A':
+                if (px <= 0) {
+                    break;
+                }
                 px--;
                 break;
-            case 'd':
-                //div.textContent = "D";
+            case 'd' || 'D':
+                if (px >= maxX - 1) {
+                    break;
+                }
                 px++;
                 break;
             default:
                 return;
                 break;
         }
-
+        console.log(px, ",", py);
         //var a = 0;
         //y.forEach(element => {
         //    a++;
@@ -42,22 +57,31 @@
         //}
         //);
 
-            div.innerHTML = "";
+        div.innerHTML = "";
+
 
         for (var h = 0; h < 20; h++) {
             for (var i = 0; i < 20; i++) {
-                if (i == px && h == py) 
-                {
+                if (i == px && h == py) {
                     div.innerHTML += "□";
                     continue;
                 }
-
+                if (i == starX && h == starY) {
+                    div.innerHTML += "☆";
+                    continue;
+                }
+                
                 div.innerHTML += "■";
             }
             div.innerHTML += "</br>";
         }
         //div.innerHTML[px][py] = "■";
         //console.log(div.innerHTML[px][py]);
+
+        //Falling stars
+
+        starY++;
+        if(starY > maxY) starY = 0;
     });
 
 
