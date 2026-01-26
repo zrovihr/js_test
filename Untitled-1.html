@@ -1,3 +1,16 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
 <button onclick="clkBtn('btn-click!!');">
     click me!!!
 </button>
@@ -57,7 +70,19 @@
         //}
         //);
 
-        div.innerHTML = "";
+        
+        //div.innerHTML[px][py] = "■";
+        //console.log(div.innerHTML[px][py]);
+
+        //Falling stars
+
+        starY++;
+        if(starY > maxY) starY = 0;
+    });
+
+function updateDisplay()
+{
+    div.innerHTML = "";
 
 
         for (var h = 0; h < 20; h++) {
@@ -75,16 +100,12 @@
             }
             div.innerHTML += "</br>";
         }
-        //div.innerHTML[px][py] = "■";
-        //console.log(div.innerHTML[px][py]);
+}
 
-        //Falling stars
-
-        starY++;
-        if(starY > maxY) starY = 0;
-    });
-
-
+requestAnimationFrame(updateDisplay);
 
     //div.innerHTML += "■ <br>";
 </script>
+
+</body>
+</html>
